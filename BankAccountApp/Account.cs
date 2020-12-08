@@ -37,6 +37,6 @@ namespace BankAccountApp
             return "Withdraw Successful";
         }
 
-        public string Report() => "hello "+CustomerName + " your current balance is "+ Balance+ " Taka";
+        public string Report() => "hello "+CustomerName + " your current balance is  "+ Balance+ " Taka";
     }
 }

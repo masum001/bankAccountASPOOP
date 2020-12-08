@@ -16,12 +16,11 @@ namespace BankAccountApp
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
-            Account anAccount = new Account();
 
-            anAccount.AccountNumber = accNumberTextBox.Text;
-            anAccount.CustomerName = clientNameTextBox.Text;
+            string accountNumber = accNumberTextBox.Text;
+            string customerName = clientNameTextBox.Text;
 
-
+            Account anAccount = new Account( accountNumber, customerName);
             saveButton.Enabled = false;
 
             ViewState.Add("Account", anAccount);
@@ -32,7 +31,8 @@ namespace BankAccountApp
             Account anAccount = (Account)ViewState["Account"];
 
             double amount =Convert.ToDouble(ammountTextBox.Text);
-            anAccount.Deposit(amount);
+            
+            reportLabel.Text = anAccount.Deposit(amount);
         }
 
         protected void withdrawButton_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace BankAccountApp
             Account anAccount = (Account)ViewState["Account"];
             double amount = Convert.ToDouble(ammountTextBox.Text);
 
-            anAccount.Withdraw(amount);
+            reportLabel.Text = anAccount.Withdraw(amount);
         }
 
         protected void reportButton_Click(object sender, EventArgs e)
